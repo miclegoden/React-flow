@@ -1,5 +1,5 @@
 // import React, { memo, FC, CSSProperties } from 'react';
-import { useCallback } from 'react'
+import { useCallback, FC } from 'react'
 import ReactFlow, {
   ReactFlowProvider,
   addEdge,
@@ -7,18 +7,17 @@ import ReactFlow, {
   Connection,
   CoordinateExtent,
   Position,
+  NodeProps,
   useNodesState,
   useEdgesState,
   MarkerType,
   EdgeMarker,
-  Handle,
 } from 'react-flow-renderer'
 import dagre from 'dagre'
 
-import initialItems, { handlestyle as style } from './initial-elements'
+import initialItems from './initial-elements'
 
 import './layouting.css'
-import { handlestyle } from './initial-elements'
 
 const dagreGraph = new dagre.graphlib.Graph()
 
@@ -37,6 +36,46 @@ const nodeExtent: CoordinateExtent = [
 //     boxShadow:
 //       "rgba(0, 0, 0, 0.2) 0px 1px 3px 0px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 2px 1px -1px"
 // ]
+
+const NodeA: FC<NodeProps> = () => {
+  return <div>Header</div>
+}
+const NodeB: FC<NodeProps> = () => {
+  return <div>dfgfdg</div>
+}
+const NodeC: FC<NodeProps> = () => {
+  return <div>dfgdfg</div>
+}
+const NodeD: FC<NodeProps> = () => {
+  return <div>Header</div>
+}
+const NodeE: FC<NodeProps> = () => {
+  return <div>Header</div>
+}
+const NodeF: FC<NodeProps> = () => {
+  return <div>Header</div>
+}
+const NodeG: FC<NodeProps> = () => {
+  return <div>Header</div>
+}
+const NodeH: FC<NodeProps> = () => {
+  return <div>Header</div>
+}
+const NodeI: FC<NodeProps> = () => {
+  return <div>Header</div>
+}
+
+const nodeTypesObjects = {
+  a: NodeA,
+  b: NodeB,
+  c: NodeC,
+  d: NodeD,
+  e: NodeE,
+  f: NodeF,
+  h: NodeH,
+  g: NodeG,
+  i: NodeI,
+}
 
 const LayoutFlow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialItems.nodes)
@@ -107,20 +146,11 @@ const LayoutFlow = () => {
           nodeExtent={nodeExtent}
           style={{ background: '#f5f5ef' }}
           onInit={() => onLayout('LR')}
+          nodeTypes={nodeTypesObjects}
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
+          className="touchdevice-flow"
         >
-          <Handle
-            style={{
-              width: 10, // Does not work
-              height: 10,
-              margin: 'auto',
-              background: '#ddd',
-              borderRadius: '15px',
-              border: '2px solid #ddd',
-            }}
-          ></Handle>
-
           <Controls />
         </ReactFlow>
       </ReactFlowProvider>

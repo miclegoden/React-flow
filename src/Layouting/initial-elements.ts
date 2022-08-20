@@ -5,7 +5,7 @@ import { Node, Edge, MarkerType, Position } from 'react-flow-renderer'
 const nodes: Node[] = [
   {
     id: '1',
-    type: 'input',
+    type: 'a',
 
     data: { label: 'input1' },
     style: {
@@ -33,7 +33,7 @@ const nodes: Node[] = [
   },
   {
     id: '2',
-    type: 'input',
+    type: 'b',
     data: {
       label: 'node 2',
     },
@@ -44,11 +44,10 @@ const nodes: Node[] = [
       backgroundColor: '#fff',
       borderColor: '#fff',
     },
-    sourcePosition: Position.Right,
   },
   {
     id: '2a',
-    type: 'input',
+    type: 'c',
     data: {
       label: 'node 2a',
     },
@@ -208,7 +207,7 @@ const nodes: Node[] = [
 
   {
     id: '2b',
-    type: 'input',
+    type: 'd',
     data: { label: 'node 2b' },
     style: {
       padding: '6, 18',
@@ -233,6 +232,7 @@ const nodes: Node[] = [
     parentNode: '2b',
     position: { x: 0, y: 0 },
     extent: 'parent',
+    zIndex: 2,
   },
   {
     id: '2b2',
@@ -251,7 +251,7 @@ const nodes: Node[] = [
   },
   {
     id: '2c',
-    type: 'input',
+    type: 'e',
     data: { label: 'node 2c' },
     style: {
       padding: '6, 18',
@@ -294,7 +294,7 @@ const nodes: Node[] = [
   },
   {
     id: '2d',
-    type: 'input',
+    type: 'f',
     data: { label: 'node 2d' },
     style: {
       padding: '6, 18',
@@ -349,7 +349,7 @@ const nodes: Node[] = [
   },
   {
     id: '4',
-    type: 'input',
+    type: 'h',
     data: { label: 'node 4' },
     style: {
       padding: '6, 18',
@@ -392,7 +392,7 @@ const nodes: Node[] = [
   },
   {
     id: '5',
-    type: 'input',
+    type: 'i',
     data: { label: 'node 5' },
     position: { x: 1300, y: 300 },
     style: {
@@ -445,7 +445,7 @@ const nodes: Node[] = [
   },
   {
     id: '2a1',
-    type: 'default',
+    type: 'g',
     data: { label: 'node 2a-1' },
     style: {
       padding: '6, 18',
@@ -488,17 +488,6 @@ const nodes: Node[] = [
   },
 ]
 
-// const handle = [
-//   {
-//     widht: '10px', // Does not work
-//     height: '10px',
-//     margin: 'auto',
-//     background: '#ddd',
-//     borderRadius: '15px',
-//     border: '2px solid #ddd',
-//   },
-// ]
-
 const edges: Edge[] = [
   {
     id: 'e1a20',
@@ -511,24 +500,31 @@ const edges: Edge[] = [
     source: '8',
     target: '20',
     markerEnd: { type: MarkerType.Arrow },
+    style: { stroke: '#0066ff' },
   },
   {
     id: 'e212ah',
     source: '21',
     target: '2ah',
     markerEnd: { type: MarkerType.Arrow },
+    style: { stroke: 'yellow' },
+    zIndex: 1,
   },
   {
     id: 'e222b1',
     source: '22',
     target: '2b1',
     markerEnd: { type: MarkerType.Arrow },
+    style: { stroke: 'yellow' },
+    zIndex: 1,
   },
   {
     id: 'e232c1',
     source: '23',
     target: '2c1',
     markerEnd: { type: MarkerType.Arrow },
+    style: { stroke: 'red' },
+    zIndex: 1,
   },
   {
     id: 'e242d1',
@@ -541,18 +537,24 @@ const edges: Edge[] = [
     source: '2ab',
     target: '2a2',
     markerEnd: { type: MarkerType.Arrow },
+    style: { stroke: 'yellow' },
+    zIndex: 1,
   },
   {
     id: 'e2ad2a1',
     source: '2ad',
     target: '2a2',
     markerEnd: { type: MarkerType.Arrow },
+    style: { stroke: 'yellow' },
+    zIndex: 1,
   },
   {
     id: 'e2ac2c1',
     source: '2ac',
     target: '2c1',
     markerEnd: { type: MarkerType.Arrow },
+    style: { stroke: 'red' },
+    zIndex: 1,
   },
   {
     id: 'e2d220',
@@ -591,19 +593,6 @@ const edges: Edge[] = [
     markerEnd: { type: MarkerType.Arrow },
   },
 ]
-
-export const handlestyle = {
-  handle: {
-    widht: '10px', // Does not work
-    height: '10px',
-    margin: 'auto',
-    background: '#ddd',
-    borderRadius: '15px',
-    border: '2px solid #ddd',
-    boxShadow:
-      'rgba(0, 0, 0, 0.2) 0px 1px 3px 0px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 2px 1px -1px',
-  },
-}
 
 const nodesAndEdges = { nodes, edges }
 
